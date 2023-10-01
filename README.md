@@ -1,5 +1,5 @@
 # Accuracy of Gender Detection of Queer Voices
-Signal Processing final project
+Signal Processing final project. I built a gender classifier using CommonVoice data and tested it against queer voices (known celebrities, pulling clips listed in VoxCeleb 1 and 2)
 
 ## TODO: actually write out this readme
 

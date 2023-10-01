@@ -1,3 +1,8 @@
+"""
+    Author: Emma Rafkin
+    Script to munge the CommonVoice Data. Remove anything that is reported,  unvalidated, or without a gender.
+    Seperate the clips into gendered folders.
+"""
 import os
 import pandas as pd
 from tqdm import tqdm 
@@ -15,3 +20,7 @@ print(validated_dataset["gender"].value_counts())
 for index, row in tqdm(validated_dataset.iterrows()):
     if row["gender"] == "other":       
         os.rename(f"./data/cv-corpus-10.0-delta-2022-07-04/en/clips/{row['path']}", f"./data/commonvoice_train_other/{row['path']}")
+    elif row["gender"] == "male":       
+        os.rename(f"./data/cv-corpus-10.0-delta-2022-07-04/en/clips/{row['path']}", f"./data/commonvoice_train_male/{row['path']}")
+    elif row["gender"] == "female":       
+        os.rename(f"./data/cv-corpus-10.0-delta-2022-07-04/en/clips/{row['path']}", f"./data/commonvoice_train_female/{row['path']}")

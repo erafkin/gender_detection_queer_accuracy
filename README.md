@@ -7,6 +7,8 @@ Built using Python 3.10. To run on a Mac:
 - `source venv/bin/activate`
 - `pip install -r requirements.txt`
 
+This was also tested and run in Python 3.6 because that is what the HPC had.
+
 The models were trained on the Georgetown Google HPC, there are slurm scripts [here](scripts/slurm/) if you are curious about what resources were used or if you want to replicate it.
 
 ## Data

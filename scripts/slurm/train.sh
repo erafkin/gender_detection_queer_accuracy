@@ -11,5 +11,5 @@
 
 module load cuda/11.8
 #module load python3/3.6.8
-
+source venv/bin/activate
 python ./scripts/train.py

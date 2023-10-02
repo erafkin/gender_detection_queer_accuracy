@@ -10,7 +10,7 @@
 #SBATCH --mail-type=END,FAIL
 
 module load cuda/11.8
-#module load python3/3.6.8
+module load python3/3.6.8
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt

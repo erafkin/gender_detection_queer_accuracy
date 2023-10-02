@@ -1,4 +1,8 @@
 pandas
 tqdm
-transformers
-datasets[audio]==2.5.0
+transformers[torch]
+datasets[audio]
+soundfile
+evaluate
+torch
+torchvision

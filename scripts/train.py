@@ -56,14 +56,14 @@ model = AutoModelForAudioClassification.from_pretrained(
 )
 
 training_args = TrainingArguments(
-    output_dir="gender_classifier",
+    output_dir="gender_classifier_20_epochs",
     evaluation_strategy="epoch",
     save_strategy="epoch",
     learning_rate=3e-5,
     per_device_train_batch_size=32,
     gradient_accumulation_steps=4,
     per_device_eval_batch_size=32,
-    num_train_epochs=10,
+    num_train_epochs=20,
     warmup_ratio=0.1,
     logging_steps=10,
     load_best_model_at_end=True,
@@ -81,4 +81,4 @@ trainer = Trainer(
 )
 
 trainer.train()
-
+trainer.save_model("gender_classifier_20_epochs")

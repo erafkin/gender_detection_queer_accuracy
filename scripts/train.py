@@ -14,7 +14,7 @@ from transformers import AutoModelForAudioClassification, TrainingArguments, Tra
 
 
 # Load the dataset and split it for training and validation in training
-commonvoice = load_dataset("audiofolder", data_dir="/Users/erafkin/Desktop/Desktop/2023-2024/fall/signal_processing/gender_detection_queer_accuracy/data/commonvoice")
+commonvoice = load_dataset("audiofolder", data_dir="./data/commonvoice")
 commonvoice = commonvoice["train"].train_test_split()
 print("Training Dataset, train-test split")
 print(commonvoice)

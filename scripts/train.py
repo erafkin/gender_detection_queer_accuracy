@@ -11,14 +11,13 @@ from transformers import AutoFeatureExtractor
 import evaluate
 import numpy as np
 from transformers import AutoModelForAudioClassification, TrainingArguments, Trainer
-
+import os
 
 # Load the dataset and split it for training and validation in training
-commonvoice = load_dataset("audiofolder", data_dir="/Users/erafkin/Desktop/Desktop/2023-2024/fall/signal_processing/gender_detection_queer_accuracy/data/commonvoice")
+commonvoice = load_dataset("audiofolder", data_dir=f"{os.getcwd()}/data/commonvoice")
 commonvoice = commonvoice["train"].train_test_split()
 print("Training Dataset, train-test split")
 print(commonvoice)
-
 # resample the audio to work with wav2vec2
 commonvoice = commonvoice.cast_column("audio", Audio(sampling_rate=16000)) 
 # Get the labels out of the dataset so we remember what they are

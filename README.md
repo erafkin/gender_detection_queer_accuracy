@@ -7,6 +7,8 @@ Built using Python 3.10. To run on a Mac:
 - `source venv/bin/activate`
 - `pip install -r requirements.txt`
 
+The models were trained on the Georgetown Google HPC, there are slurm scripts [here](scripts/slurm/) if you are curious about what resources were used or if you want to replicate it.
+
 ## Data
 I have chosen to not upload the data here, as for CommonVoice sometimes users pull their voices and the VoxCeleb data is no longer available on their website directly, just the identifiers. I will just list what data I used and where I got it
 - Training: [Common Voice Delta Segment 10.0](https://commonvoice.mozilla.org/en/datasets)

@@ -20,7 +20,7 @@ print("Training Dataset, train-test split")
 print(commonvoice)
 
 # resample the audio to work with wav2vec2
-commonvoice = commonvoice.cast_column("audio", Audio(sampling_rate=16_000)) 
+commonvoice = commonvoice.cast_column("audio", Audio(sampling_rate=16000)) 
 # Get the labels out of the dataset so we remember what they are
 
 ## Labels:

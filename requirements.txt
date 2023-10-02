@@ -1,4 +1,4 @@
 pandas
 tqdm
 transformers
-datasets[audio]
+datasets[audio]==2.5.0

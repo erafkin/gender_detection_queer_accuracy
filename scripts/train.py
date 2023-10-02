@@ -11,10 +11,10 @@ from transformers import AutoFeatureExtractor
 import evaluate
 import numpy as np
 from transformers import AutoModelForAudioClassification, TrainingArguments, Trainer
-
+import os
 
 # Load the dataset and split it for training and validation in training
-commonvoice = load_dataset("audiofolder", data_dir="./data/commonvoice")
+commonvoice = load_dataset("audiofolder", data_dir=f"{os.getcwd()}/data/commonvoice")
 commonvoice = commonvoice["train"].train_test_split()
 print("Training Dataset, train-test split")
 print(commonvoice)

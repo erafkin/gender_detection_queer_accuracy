@@ -13,5 +13,7 @@ module load cuda/11.8
 module load python3/3.6.8
 python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
-python ./scripts/train.py
+which python3
+pip3 install -r requirements.txt
+pip3 show datasets
+python3 ./scripts/train.py

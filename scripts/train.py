@@ -8,7 +8,7 @@
 
 from datasets import load_dataset, Audio
 from transformers import AutoFeatureExtractor
-import evaluate
+import scripts.evaluate_queer_voices as evaluate_queer_voices
 import numpy as np
 from transformers import AutoModelForAudioClassification, TrainingArguments, Trainer
 import os
@@ -44,7 +44,7 @@ def preprocess_function(examples):
     return inputs
 
 encoded_dataset = commonvoice.map(preprocess_function, remove_columns="audio", batched=True)
-accuracy = evaluate.load("accuracy")
+accuracy = evaluate_queer_voices.load("accuracy")
 def compute_metrics(eval_pred):
     predictions = np.argmax(eval_pred.predictions, axis=1)
     return accuracy.compute(predictions=predictions, references=eval_pred.label_ids)

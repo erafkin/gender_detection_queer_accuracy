@@ -10,8 +10,7 @@
 #SBATCH --mail-type=END,FAIL
 
 module load cuda/11.8
-anaconda3/3.9
-conda activate venv
-pip install -r requirements.txt
-which python
-python ./scripts/train.py
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+python3 ./scripts/train.py

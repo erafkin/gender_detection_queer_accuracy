@@ -18,7 +18,6 @@ commonvoice = load_dataset("audiofolder", data_dir=f"{os.getcwd()}/data/commonvo
 commonvoice = commonvoice["train"].train_test_split()
 print("Training Dataset, train-test split")
 print(commonvoice)
-
 # resample the audio to work with wav2vec2
 commonvoice = commonvoice.cast_column("audio", Audio(sampling_rate=16000)) 
 # Get the labels out of the dataset so we remember what they are

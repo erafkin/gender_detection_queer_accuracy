@@ -8,13 +8,13 @@
 
 from datasets import load_dataset, Audio
 from transformers import AutoFeatureExtractor
-import scripts.evaluate_queer_voices as evaluate_queer_voices
+import evaluate
 import numpy as np
 from transformers import AutoModelForAudioClassification, TrainingArguments, Trainer
 import os
 
 # Load the dataset and split it for training and validation in training
-commonvoice = load_dataset("audiofolder", data_dir=f"{os.getcwd()}/data/commonvoice")
+commonvoice = load_dataset("audiofolder", data_dir=f"{os.getcwd()}/data/commonvoice/tertiary_balance")
 commonvoice = commonvoice["train"].train_test_split()
 print("Training Dataset, train-test split")
 print(commonvoice)
@@ -24,6 +24,7 @@ commonvoice = commonvoice.cast_column("audio", Audio(sampling_rate=16000))
 
 ## Labels:
 ## should be: {'0': 'men', '1': 'other', '2': 'women'}
+## or: {'0': 'men', '1': 'women'}
 labels = commonvoice["train"].features["label"].names
 label2id, id2label = dict(), dict()
 for i, label in enumerate(labels):
@@ -44,7 +45,7 @@ def preprocess_function(examples):
     return inputs
 
 encoded_dataset = commonvoice.map(preprocess_function, remove_columns="audio", batched=True)
-accuracy = evaluate_queer_voices.load("accuracy")
+accuracy = evaluate.load("accuracy")
 def compute_metrics(eval_pred):
     predictions = np.argmax(eval_pred.predictions, axis=1)
     return accuracy.compute(predictions=predictions, references=eval_pred.label_ids)
@@ -56,7 +57,7 @@ model = AutoModelForAudioClassification.from_pretrained(
 )
 
 training_args = TrainingArguments(
-    output_dir="gender_classifier_20_epochs",
+    output_dir="tertiary_classifier_20_epochs",
     evaluation_strategy="epoch",
     save_strategy="epoch",
     learning_rate=3e-5,
@@ -81,4 +82,4 @@ trainer = Trainer(
 )
 
 trainer.train()
-trainer.save_model("gender_classifier_20_epochs")
+trainer.save_model("tertiary_classifier_20_epochs")

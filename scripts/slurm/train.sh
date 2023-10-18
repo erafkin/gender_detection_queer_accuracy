@@ -1,11 +1,9 @@
 #!/bin/bash
 #SBATCH --job-name="emma_train_classifier"
+#SBATCH --nodes=2
 #SBATCH --output="%x.o%j"
-#SBATCH --nodes=1
-#SBATCH --ntasks=1
 #SBATCH --gres=gpu:1
-#SBATCH --time=03:00:00
-#SBATCH --mem=3G
+#SBATCH --mem=8G
 #SBATCH --mail-user=epr41@georgetown.edu
 #SBATCH --mail-type=END,FAIL
 

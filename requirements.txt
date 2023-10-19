@@ -4,5 +4,5 @@ transformers[torch]
 datasets[audio]
 soundfile
 evaluate
-torch
+torch==2.0.1
 torchvision

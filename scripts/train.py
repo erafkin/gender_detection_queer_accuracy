@@ -13,7 +13,7 @@ import numpy as np
 from transformers import AutoModelForAudioClassification, TrainingArguments, Trainer
 import os
 
-model_type = "binary"
+model_type = "tertiary_balance"
 
 # Load the dataset and split it for training and validation in training
 commonvoice = load_dataset("audiofolder", data_dir=f"{os.getcwd()}/data/commonvoice_{model_type}")
@@ -26,6 +26,7 @@ commonvoice = commonvoice.cast_column("audio", Audio(sampling_rate=16000))
 
 ## Labels:
 ## should be: {'0': 'men', '1': 'other', '2': 'women'}
+## or: {'0': 'men', '1': 'women'}
 labels = commonvoice["train"].features["label"].names
 label2id, id2label = dict(), dict()
 for i, label in enumerate(labels):
@@ -58,7 +59,7 @@ model = AutoModelForAudioClassification.from_pretrained(
 )
 
 training_args = TrainingArguments(
-    output_dir="gender_classifier_20_epochs",
+    output_dir="tertiary_classifier_20_epochs",
     evaluation_strategy="epoch",
     save_strategy="epoch",
     learning_rate=3e-5,
@@ -83,4 +84,4 @@ trainer = Trainer(
 )
 
 trainer.train()
-trainer.save_model("gender_classifier_20_epochs")
+trainer.save_model("tertiary_classifier_20_epochs")

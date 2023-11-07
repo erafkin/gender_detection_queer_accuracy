@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name="emma_train_classifier"
+#SBATCH --job-name="emma_evaluate_classifier"
 #SBATCH --nodes=2
 #SBATCH --output="%x.o%j"
 #SBATCH --gres=gpu:1

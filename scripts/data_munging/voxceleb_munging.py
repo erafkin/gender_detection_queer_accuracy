@@ -3,13 +3,11 @@
     Script to download the selected youtube clips and munge them from VoxCeleb for the queer and control set of celebrities.
 """
 import os
-# import youtube_dl as ydl
 from pytube import YouTube
 from pydub import AudioSegment
 import ssl 
 ssl._create_default_https_context = ssl._create_unverified_context
 import subprocess
-import ffprobe
 
 f = open("./resources/straight_voices.txt", "r")
 queers = f.readlines()

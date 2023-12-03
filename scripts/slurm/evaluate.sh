@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name="emma_evaluate_classifier"
-#SBATCH --nodes=2
+#SBATCH --nodes=1
 #SBATCH --output="%x.o%j"
 #SBATCH --gres=gpu:1
 #SBATCH --mem=8G

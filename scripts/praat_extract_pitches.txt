@@ -1,0 +1,27 @@
+form Enter Full Path + /
+sentence path /Users/erafkin/Desktop/School/graduate/2023-2024/signal_processing/gender_detection_queer_accuracy/data/queer_clips/women/
+endform
+
+filedelete 'path$''name$'pitch_range.csv
+#header_row$ = "Filename" 
+header_row$ = "Filename" + tab$ + "start" + tab$ + "end" + "avg pitch" + tab$ + newline$
+
+header_row$ > 'path$'pitches_1.csv
+
+Create Strings as file list...  list 'path$'*.wav
+number_files = Get number of strings
+for j from 1 to number_files
+   select Strings list
+   current_token$ = Get string... 'j'
+   Read from file... 'path$''current_token$'
+   startTime = Get start time
+   endTime = Get end time
+   To Pitch:  0.00, 75, 600
+
+   f0 = Get mean: 0, 0, "Hertz"
+   fileappend "'path$'pitches_1.csv" 'current_token$''tab$''startTime''tab$''endTime''tab$''f0''newline$'
+
+   Remove
+endfor
+
+# Heavily inspired by https://stackoverflow.com/questions/59356608/how-to-automatically-extract-pitch-range-from-wav-files-in-praat-and-put-them-a

@@ -6,3 +6,4 @@ soundfile
 evaluate
 torch==2.0.1
 torchvision
+matplotlib

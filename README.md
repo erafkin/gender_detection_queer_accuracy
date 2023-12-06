@@ -23,5 +23,11 @@ Data munging scripts can be found [here](scripts/data_munging).
 - For commonvoice, the data was filtered to only include clips that were validated, not on the reported list, and have a labeled gender. They were then organized into seperate folders for uploading dynamically into the training script.
 - For voxceleb: I curated a list of queer and heterosexual speaker that appear in this dataset, which can be found [here](resources/). The metadata that I pulled only has clips where the face of the speaker can be seen to be conveying emotion, not necessarily speaking. The clips with the indicated frames also ended up being less than 3 seconds. Because of  this, I pulled 2-3 videos of each of the speakers of interest and hand selected 10+ seconds where they were speaking uninteruppted.  
 
+Evaluation celebrity clips are compressed in the [data](data/) folder
+
 ## Evaluation
 See the [results folder](results/) for the results as I get them. A notebook generating tables/visualizations can be found [here](results/result_notebook.ipynb)
+
+## Pitch evaluation
+Average pitches for each clip was extracted using [Praat](https://www.fon.hum.uva.nl/praat/)
+Script to do this dynamically [here](scripts/praat_extract_pitches.txt)
